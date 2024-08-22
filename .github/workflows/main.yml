@@ -1,0 +1,22 @@
+name: Do things
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  DoTheThing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Doing the thing"
+
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: List
+        run: |
+          echo "Looking at ${{ github.repository }}"
+          tree
+               
