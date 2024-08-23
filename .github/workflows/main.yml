@@ -13,8 +13,23 @@ jobs:
       - run: echo "Doing the thing"
 
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.22'
+
+      - name: Install dependencies
+        run: |
+          go get .
+
+      - name: Build
+        run: go build -v
+
+      - name: Test
+        run : go test
+        
       - name: List
         run: |
           echo "Looking at ${{ github.repository }}"
